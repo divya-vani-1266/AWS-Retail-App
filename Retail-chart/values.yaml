@@ -15,6 +15,13 @@ userprofile:
   label: userprofile
   activeVersion: blue  # Change to 'green' when switching versions
 
+mongodb:
+  service:
+    name: mongodb-service
+    type: ClusterIP
+    port: 27017
+    targetPort: 27017
+
 env:
   SESSION_SECRET: SESSION_SECRET
   EMAIL_USER: EMAIL_USER
