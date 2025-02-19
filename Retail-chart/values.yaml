@@ -17,7 +17,7 @@ userprofile:
 
 mongodb:
   service:
-    name: mongodb-service
+    name: mongodb-deployment
     type: ClusterIP
     port: 27017
     targetPort: 27017
