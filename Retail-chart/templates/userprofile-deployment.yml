@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userprofile-{{ .Values.userprofile.activeVersion }}
+spec:
+  replicas: {{ .Values.replicaCount.userprofile }}
+  selector:
+    matchLabels:
+      app: userprofile-{{ .Values.userprofile.activeVersion }}
+  template:
+    metadata:
+      labels:
+        app: userprofile-{{ .Values.userprofile.activeVersion }}
+    spec:
+      containers:
+      - name: userprofile
+        image: {{ .Values.userprofile.image }}
+        ports:
+        - containerPort: {{ .Values.userprofile.port }}
+        env:
+        - name: MONGODB_URI
+          value: "mongodb://mongodb-deployment:27017/myDatabase"
+        - name: SESSION_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: userprofile-secret
+              key: SESSION_SECRET
+        - name: EMAIL_USER
+          valueFrom:
+            secretKeyRef:
+              name: userprofile-secret
+              key: EMAIL_USER
+        - name: EMAIL_PASS
+          valueFrom:
+            secretKeyRef:
+              name: userprofile-secret
+              key: EMAIL_PASS
+        - name: PORT
+          value: "{{ .Values.userprofile.port }}"

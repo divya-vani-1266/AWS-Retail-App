@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: retail-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Davidgit526/AWS-Retail-App.git  # Update with actual repo URL
+    targetRevision: main
+    path: retail-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: retail
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
