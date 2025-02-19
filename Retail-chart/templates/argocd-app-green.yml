@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: userprofile-green
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Davidgit526/AWS-Retail-App.git
+    targetRevision: dev
+    path: Retail-chart
+    helm:
+      values: |
+        userprofile:
+          activeVersion: green
+  destination:
+    server: https://8B864DECEF7027A6CBD4604D7253683E.gr7.ap-south-1.eks.amazonaws.com
+    namespace: retail
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
