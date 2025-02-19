@@ -7,8 +7,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Davidgit526/AWS-Retail-App.git  # Update with actual repo URL
-    targetRevision: main
-    path: retail-app
+    targetRevision: dev
+    path: Retail-chart/templates
   destination:
     server: https://kubernetes.default.svc
     namespace: retail
