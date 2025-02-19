@@ -10,7 +10,7 @@ spec:
     targetRevision: dev
     path: Retail-chart/templates
   destination:
-    server: https://kubernetes.default.svc
+    server: https://8B864DECEF7027A6CBD4604D7253683E.gr7.ap-south-1.eks.amazonaws.com
     namespace: retail
   syncPolicy:
     automated:
