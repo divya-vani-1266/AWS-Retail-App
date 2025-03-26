@@ -1,1 +1,1 @@
-# AWS-Retail-App
+# Aws-Retail-App
